@@ -1,0 +1,29 @@
+.navBar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  height: 80px;
+  ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    li {
+      margin: 20px;
+      font-size: 20px;
+      color: white;
+    }
+  }
+  &__image {
+    float: left;
+    height: 100%;
+    padding: 10px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
