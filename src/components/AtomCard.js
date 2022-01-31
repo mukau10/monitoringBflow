@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
 
 export default function AtomCard(props) {
   return (
     <div className="dashboardContainer__atomCard">
-      <Card >
-        <Card.Img variant="top" className="dashboardContainer__atomCard-image" src={props.image} />
-        <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text>{props.text}</Card.Text>
-          <Button variant="primary" onClick={props.atomInfo}>
-            {props.button}
-          </Button>
-        </Card.Body>
-      </Card>
+      <div className="dashboardContainer__atomCard-header">
+        <img
+          className="dashboardContainer__atomCard-header__image"
+          src={props.image}
+        />
+      </div>
+      <div className="dashboardContainer__atomCard-body">
+        <h4 className="dashboardContainer__atomCard-body__name">
+          {props.name}
+        </h4>
+        <span>{props.instanceId}</span>
+      </div>
+      <div className="dashboardContainer__atomCard-footer">
+        <span>{props.status}</span>
+      </div>
     </div>
   );
 }
