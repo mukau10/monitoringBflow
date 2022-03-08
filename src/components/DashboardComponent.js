@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Bar } from "react-chartjs-2";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
-import AtomCard from "./AtomCard";
 import base64 from "react-native-base64";
-import eliePicture from "../images/Elie.jpg";
-import glenPicture from "../images/Glen.jpg";
-import koenPicture from "../images/Koen.jpg";
-import michaelPicture from "../images/Michael.jpg";
+import PersonalAtoms2 from "./PersonalAtoms2";
 
 export default function DashboardComponent() {
   ChartJS.register(ArcElement, Tooltip, Legend);
@@ -19,6 +13,7 @@ export default function DashboardComponent() {
   const [onlineAtomsCount, setOnlineAtomsCount] = useState(0);
   const [offlineAtomsCount, setOfflineAtomsCount] = useState(0);
   const [certificatesCount, setCertificatesCount] = useState(0);
+  const [allData, setAllData] = useState([]);
 
   var encode = base64.encode(
     "hrmc-3HATHD.DXKXN6:9f23c66d-c67b-4799-95d5-8477cc34ad12"
@@ -37,19 +32,19 @@ export default function DashboardComponent() {
       .then((response) => [console.log(response.data), setAtoms(response.data)])
       .catch((err) => console.error(err));
   }
-  setTimeout(() => {
-    callApi();
-  }, 1000 * 900);
-  //roept de API om de 15min
-  setTimeout(() => {
-    getOnlineAtoms();
-    getOfflineAtoms();
-    getCertificates();
-  }, 50000);
+  // setTimeout(() => {
+  //   callApi();
+  // }, 1000 * 900);
+  // //roept de API om de 15min
+  // setTimeout(() => {
+  //   getOnlineAtoms();
+  //   getOfflineAtoms();
+  //   getCertificates();
+  // }, 50000);
 
-  useEffect(() => {
-    callApi();
-  }, []);
+  // useEffect(() => {
+  //   callApi();
+  // }, []);
 
   function getCertificates() {
     atoms.map((x) => {
@@ -68,7 +63,7 @@ export default function DashboardComponent() {
         .filter((y) => y.status === "ONLINE")
         .map((z) => setOnlineAtoms((oldArray) => [...oldArray, z]));
     });
-    const distinctAtomObj = [...new Set(onlineAtoms)];
+    const distinctAtomObj = [...new Set(onlineAtoms.map((item) => item.group))];
     setOnlineAtomsCount(distinctAtomObj.length);
     return distinctAtomObj.length;
   }
@@ -79,12 +74,15 @@ export default function DashboardComponent() {
         .filter((y) => y.status === "OFFLINE")
         .map((z) => setOfflineAtoms((oldArray) => [...oldArray, z]));
     });
-    const distinctAtomObj = [...new Set(offlineAtoms)];
+    const distinctAtomObj = [
+      ...new Set(offlineAtoms.map((item) => item.group)),
+    ];
     setOfflineAtomsCount(distinctAtomObj.length);
     return distinctAtomObj.length;
   }
 
   return (
+    
     <div className="dashboardContainer">
       <main>
         <div className="dashboardContainer__buttons">
@@ -102,19 +100,9 @@ export default function DashboardComponent() {
             </li>
           </ul>
         </div>
-
         <div className="dashboardContainer__atomCards">
-          {atoms.map((x) => {
-            return Object.values(x).map((y, index) => (
-              <AtomCard
-                key={index}
-                image={""}
-                name={y.name ? y.name : "C -> " + y.certificateName}
-                instanceId={y.instanceId}
-                button="Details"
-                status={y.status}
-              />
-            ));
+        {atoms.map((x) => {
+            return Object.values(x).map((y, index) => PersonalAtoms2(y, index));
           })}
         </div>
       </main>

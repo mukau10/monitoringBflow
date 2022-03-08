@@ -13,6 +13,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    border: solid black 1px;
   }
   &__atomCard {
     display: flex;
@@ -21,18 +22,88 @@
     width: calc(100% / 4);
     border: 1px solid lightgray;
     background-color: lightgrey;
-    padding: 1rem 1rem;
+    padding: 10px;
     border-radius: 10px;
-    height: 400px;
+    height: 450px;
     margin: 20px;
-    &-image {
+    &-header {
+      width: 100%;
+      height: 230px;
+      border-radius: 5px;
+      &__image {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+    }
+    &-body {
+      height: 150px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &-footer {
+      height: 60px;
+      width: 100%;
+      border-top: solid rgb(99, 97, 97) 2px;
+      padding: 5px;
+      text-align: center;
+      &__top {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 250px;
-        margin-top: 5px;
-        object-fit: contain;
-      img {
+        &-online {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &-circle {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            border: solid rgba(198, 214, 198, 0.315) 2px;
+            border-radius: 50%;
+            margin-right: 20px;
+          }
+        }
+        &-offline {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &-circle {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border: solid rgba(228, 156, 156, 0.753) 2px;
+            border-radius: 50%;
+            margin-right: 20px;
+          }
+        }
+      }
+      &__bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-button {
+          height: 30px;
+          width: 100%;
+          margin-top: 5px;
+          border: none;
+          text-transform: uppercase;
+          border-radius: 10px;
+          background: blue;
+          color: white;
+          font-weight: 400;
+          &:hover {
+            background-color: white;
+            color: blue;
+            font-weight: bolder;
+            cursor: pointer;
+          }
+        }
+  
       }
     }
   }
@@ -71,6 +142,10 @@
   width: 300px;
   height: 300px;
 }
-.card-img-top{
-    width: 10%;
+.card-img-top {
+  width: 10%;
+}
+.listGroupItem{
+  border: solid red 2px !important;
+  text-align: center;
 }

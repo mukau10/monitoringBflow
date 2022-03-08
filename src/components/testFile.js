@@ -31,11 +31,18 @@ let second = myArr.map((x) => {
     .filter((y) => y.info != null)
     .map((z) => console.log(z));
 });
-let third = myArr.map((x) => {
-  return x[2];
-});
-let fourth = myArr.map((x) => {
-  return x[3];
-});
+function calculateExpirationDate(){
+  let myDate = new Date("2022-07-27T21:59:59Z");
 
-console.log("Second data: " + second);
+let expirationData = new Date(myDate.toUTCString());
+
+let today = new Date();
+
+let difference = expirationData - today;
+
+return console.log(Math.round(difference/(1000*60*60*24)));
+
+}
+
+calculateExpirationDate();
+

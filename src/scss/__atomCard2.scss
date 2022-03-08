@@ -1,0 +1,75 @@
+.dashboardContainer__atomCard2__online {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+  &-cards {
+    background-color: lightgray;
+    height: 200px;
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 50%;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &__image {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      &-status {
+        width: 10px;
+        height: 10px;
+        background-color: green;
+        border-radius: 50%;
+        position: absolute;
+        margin-top: 190px;
+        margin-left: 60px;
+      }
+    }
+  }
+  &__button {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: solid grey 1px;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: white;
+  }
+}
+.dashboardContainer__atomCard2__offline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  border: solid black 2px;
+
+  &-cards {
+    background-color: grey;
+    height: 150px;
+    width: 110px;
+    margin: 10px;
+    display: flex;
+    border-radius: 50%;
+    &__image {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+      opacity: 0.2;
+      &-status {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        margin-top: 130px;
+        margin-left: 45px;
+      }
+    }
+  }
+}
